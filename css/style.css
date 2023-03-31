@@ -23,7 +23,7 @@
 body{
   font-family: 'Galaktika';	
   font-weight: bold;
-  background: #224466FF;  
+  background: #224E66FF;  
   box-shadow: inset 1px 1px 25px 5px rgba(0,0,0,0.6);
 }
 
@@ -31,7 +31,7 @@ h1{
   text-align: center;
 padding: 3vh;
   font-size: 2.5em;
-   color: #777;
+   color: #aaa;
 	text-shadow:  2px 2px 0px rgba(0,0,0,0.3);
   user-select: none;
 }
@@ -67,24 +67,22 @@ select{
   font-size: 1.5em;
   font-family: 'verdana';	
   cursor: pointer;
-  background: #224466E1;  
+  background: #224E66FF;  
    width: 90vw;
-   color: #777;
+   color: #aaa;
   user-select: none;
-  border: 5px black solid;
+  border: 4px black solid;
   border-radius: 3px;
   box-shadow: inset 0px 0px 15px 2px rgba(0,0,0,0.5);	 
 }
 option{
-  display: block;
-  border: 5px #0f1 solid; 
-  
+  display: block;  
 }
 #id0, #id1, #id2{
    box-shadow: inset 1px 1px 9px 3px rgba(0,0,0,0.6), 2px 1px 30px 0px rgba(0,0,0,0.6);
    letter-spacing: 0.5vw;
   border-radius: 5px;	
-	border: 5px #120 solid;  
+	border: 4px #120 solid;  
 }
 #id0, #id1{
 	position: relative;	
@@ -101,23 +99,23 @@ option{
    background: linear-gradient(0.75turn, #301, #601 40%, #301 85%);
   color: #f29;
 	text-shadow: 0 0 18px #f0a, 0 0 12px #f0a;
-  border: 5px #021 solid;
+  border: 4px #021 solid;
 }
 #id3{  
   padding: 2vh 3vh;
   margin-top: 4vh;
-  color: #777;
+  color: #aaa;
   font-family: 'Galaktika';
-  background: #224466FF;
+  background: #224E66FF;
   width: 5em;  
-     box-shadow: inset 1px 1px 25px 5px rgba(0,0,0,0.6), 2px 1px 30px 0px rgba(0,0,0,0.6);
+     box-shadow: inset 1px 1px 25px 3px rgba(0,0,0,0.6), 2px 1px 30px 0px rgba(0,0,0,0.6);
   border: 4px black solid;
   border-radius: 3px;
 }
 
 
 #massage{
-   color: #777;
+   color: #aaa;
   padding: 1vh;
   margin: 1vh;
   text-align: center;
@@ -135,6 +133,7 @@ option{
   
   #id0, #id1, #id2, #id3{
     font-size: 6vh;
+    color: #999;
   }
   
 }
