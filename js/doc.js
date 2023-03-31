@@ -14,13 +14,17 @@ for (let i = 0; i < 4; i++) {
   let inp = document.createElement('input');
   if (i == 0) { inp.setAttribute('placeholder', 'А'); }
   if (i == 1) { inp.setAttribute('placeholder', 'Б'); }
-  if (i == 2) { inp.setAttribute('placeholder', 'Ответ') }
+  if (i == 2) {
+    inp.setAttribute('placeholder', 'Ответ')
+    inp.setAttribute('readonly', 'readonly')
+  }
   if (i == 3) {
     inp.setAttribute('type', 'button');
     inp.setAttribute('value', 'С Б Р О С');
   }
   inp.id = 'id' + i;
   inp.setAttribute('class', 'inputs');
+  inp.setAttribute('inputmode', 'numeric');
   form.append(inp);
 }
 
@@ -30,7 +34,7 @@ let div = document.createElement('div');
 
 let dey_labels = ['+', '-', '*', '/', '^ &nbsp;&nbsp; А в степень Б', '&#8730; &nbsp;&nbsp; степени Б из А',
   '% &nbsp;&nbsp; ост от деления', 'А! &nbsp;&nbsp; факториал', 'sin А', 'cos А',
-  'log(А) &nbsp;&nbsp; логарифм А по осн. Б'];
+  'log &nbsp;&nbsp; логарифм А по осн. Б'];
 
 let select = document.createElement("select");
 select.id = "dey";
