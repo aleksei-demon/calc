@@ -28,7 +28,6 @@ for (let i = 0; i < 4; i++) {
   form.append(inp);
 }
 
-
 let div = document.createElement('div');
 //div.classList.add('', '', '');
 
@@ -135,4 +134,12 @@ function put_to_RAM() {
 }
 
 
+//========================================================
 
+
+function stopDefAction(evt) {
+  evt.preventDefault();
+}
+
+document.getElementById('id0').addEventListener('dbclick', stopDefAction, false);
+document.getElementById('id1').addEventListener('dbclick', stopDefAction, false);
