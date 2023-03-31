@@ -82,7 +82,7 @@ option{
    box-shadow: inset 1px 1px 9px 3px rgba(0,0,0,0.6), 2px 1px 30px 0px rgba(0,0,0,0.6);
    letter-spacing: 0.5vw;
   border-radius: 5px;	
-	border: 4px #000 solid;  
+	border: 4px #010 solid;  
 }
 #id0, #id1{
 	position: relative;	
@@ -99,7 +99,7 @@ option{
    background: linear-gradient(0.75turn, #301, #601 40%, #301 85%);
   color: #f29;
 	text-shadow: 0 0 18px #f0a, 0 0 12px #f0a;
-  border: 4px #021 solid;
+  border: 4px #010 solid;
 }
 #id3{  
   padding: 2vh 3vh;
