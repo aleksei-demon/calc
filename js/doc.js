@@ -2,7 +2,6 @@ let body = document.querySelector('body');
 let header = document.createElement('header');
 let h1 = document.createElement('h1');
 h1.innerText = 'Ч И С Л О Б О Г';
-//h1.innerText = 'AAAAAA';
 header.append(h1);
 
 let inputStrings = document.createElement('section');
@@ -29,10 +28,9 @@ for (let i = 0; i < 4; i++) {
 }
 
 let div = document.createElement('div');
-//div.classList.add('', '', '');
 
 let dey_labels = ['+', '-', '*', '/', '^ &nbsp;&nbsp; А в степень Б', '&#8730; &nbsp;&nbsp; степени Б из А',
-  '% &nbsp;&nbsp; ост от деления', 'А! &nbsp;&nbsp; факториал', 'sin А', 'cos А',
+  '% &nbsp;&nbsp; остаток от А/Б ', 'А! &nbsp;&nbsp; факториал', 'sin А', 'cos А',
   'log &nbsp;&nbsp; логарифм А по осн. Б'];
 
 let select = document.createElement("select");
@@ -50,9 +48,14 @@ for (let i = 0; i < dey_labels.length; i++) {
   select.append(option);
 }
 
+//======
+let p = document.createElement('p');
+p.setAttribute('id', 'massage');
+form.append(p);
+//==========
+
 body.append(header);
 body.append(inputStrings);
-
 
 let op1 = document.querySelector('#id0');
 let dey = document.querySelector('#dey');
@@ -111,22 +114,14 @@ function Calc() {
   if (otv == -Infinity) { otvet.placeholder = '-Безконечность'; otv = ''; otvet.value = otv; return }
   if (isNaN(otv)) { otv = ''; otvet.value = otv; return }
   otvet.value = +(otv.toFixed(15));
-  //return otv;
 }
 
 function put_to_RAM() {
   navigator.clipboard.writeText(otvet.value)
     .then(() => {
       // Получилось!
-      let form = document.querySelector('form');
-      let p = document.createElement('p');
-      p.setAttribute('id', 'massage');
       p.innerText = 'Скопировано в буфер обмена';
-      form.append(p);
-      let p_massage = document.getElementById('massage');
-      setTimeout(() => {
-        form.removeChild(p_massage);
-      }, 2200);
+      setTimeout(() => { p.innerText = ''; }, 2200);
     })
     .catch(err => {
       console.log('Something went wrong', err);
