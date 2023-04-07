@@ -121,13 +121,12 @@ function Calc() {
   for (let val of String(otv)) {
     if (val == 0) {
       countZerro++;
+    } else if (countZerro > 8 || val == 0) {
+      countZerro++; zerroFix = true;
     } else { countZerro = 0; }
-    if (countZerro > 8) {
-      zerroFix = true;
-    }
   }
   if (zerroFix == true) {
-    otvet.value = +(otv.toFixed(countZerro));
+    otvet.value = +(otv.toFixed(countZerro)); console.log(countZerro);
   } else { otvet.value = otv; }
 
   // let count_nines = 0;
