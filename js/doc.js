@@ -86,6 +86,8 @@ dey.oninput = Calc; op1.oninput = Calc; op2.oninput = Calc;
 otvet.onclick = put_to_RAM;
 
 function Calc() {
+  op1.value = comma_point_correct(op1.value);
+  op2.value = comma_point_correct(op2.value);
   otvet.placeholder = 'Ответ';
   let err_count = 0;
   let otv = 0;
@@ -113,8 +115,36 @@ function Calc() {
   if (otv == Infinity) { otvet.placeholder = 'Безконечность'; otv = ''; otvet.value = otv; return }
   if (otv == -Infinity) { otvet.placeholder = '-Безконечность'; otv = ''; otvet.value = otv; return }
   if (isNaN(otv)) { otv = ''; otvet.value = otv; return }
-  otvet.value = +(otv.toFixed(15));
+
+  let countZerro = 0;
+  let zerroFix = false;
+  for (let val of String(otv)) {
+    if (val == 0) {
+      countZerro++;
+    } else { countZerro = 0; }
+    if (countZerro > 8) {
+      zerroFix = true;
+    }
+  }
+  if (zerroFix == true) {
+    otvet.value = +(otv.toFixed(countZerro));
+  } else { otvet.value = otv; }
+
+  // let count_nines = 0;
+  // let nineFix = 0;
+  // for (let i = 0; i < String(otv).length; i++) {
+  //   if (String(otv)[i] == 9) {
+  //     count_nines++; nineFix = (i - 1);
+  //   } else { count_nines = 0; nineFix = 0; }
+  //   if (count_nines > 8) {
+  //     String(otv)[nineFix] += 1;
+  //     console.log(nineFix);
+  //     console.log(String(otv)[nineFix]);
+  //   }
+  // }
+  // otvet.value = otv;
 }
+Calc();
 
 function put_to_RAM() {
   navigator.clipboard.writeText(otvet.value)
@@ -128,7 +158,16 @@ function put_to_RAM() {
     });
 }
 
-
+function comma_point_correct(op) {
+  let container = '';
+  for (let val of op) {
+    if (val == ',') {
+      val = '.';
+      container += val;
+    } else { container += val; }
+  }
+  return container;
+}
 //========================================================
 
 
