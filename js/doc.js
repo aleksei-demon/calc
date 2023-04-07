@@ -126,7 +126,7 @@ function Calc() {
     } else { countZerro = 0; }
   }
   if (zerroFix == true) {
-    otvet.value = +(otv.toFixed(countZerro)); console.log(countZerro);
+    otvet.value = +(otv.toFixed(countZerro - 1)); console.log(countZerro);
   } else { otvet.value = otv; }
 
   // let count_nines = 0;
