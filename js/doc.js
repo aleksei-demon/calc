@@ -144,7 +144,7 @@ function Calc() {
   // }
   // otvet.value = otv;
 }
-Calc();
+
 
 function put_to_RAM() {
   navigator.clipboard.writeText(otvet.value)
