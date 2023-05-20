@@ -72,15 +72,15 @@ function gen_trans() {
 
     appender('label', '#form', '', 'К.', '', 'ktr_');
     appender('sub', '#ktr_', '', 'тр.', '', '');
-    appender('input', '#ktr_', 'соотношение числа витков', 'numeric', 'inputs trans', 'K');
+    appender('input', '#ktr_', 'соотн. числа витков', 'numeric', 'inputs trans', 'K');
 
     appender('label', '#form', '', 'R', '', 'loadR_');
     appender('sub', '#loadR_', '', 'нагр.', '', '');
-    appender('input', '#loadR_', 'R нагрузки УНЧ., Ом', 'numeric', 'inputs trans', 'L');
+    appender('input', '#loadR_', 'R нагр. УНЧ., Ом', 'numeric', 'inputs trans', 'L');
 
     appender('label', '#form', '', 'R', '', 'anodR_');
     appender('sub', '#anodR_', '', 'анод.', '', '');
-    appender('input', '#anodR_', 'R нагрузки анода, Ом', 'numeric', 'inputs trans', 'A');
+    appender('input', '#anodR_', 'R Анода, Ом', 'numeric', 'inputs trans', 'A');
 
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
