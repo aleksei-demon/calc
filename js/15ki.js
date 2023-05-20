@@ -18,15 +18,12 @@ fill_select_options(where_to_get, option_id);
 */
 
 //====================
-let dey_labels = ['+', '-', '*', '/', '^ &nbsp;&nbsp; А в степень Б', '&#8730; &nbsp;&nbsp; степени Б из А',
-    '% &nbsp;&nbsp; остаток от А/Б ', 'А! &nbsp;&nbsp; факториал', 'sin А', 'cos А',
+let dey_labels = ['&nbsp;&nbsp;+', '&nbsp;&nbsp;-', '&nbsp;&nbsp;*', '&nbsp;&nbsp;/', '^ &nbsp;&nbsp; А в степень Б', '&#8730; &nbsp;&nbsp; степени Б из А',
+    '% &nbsp;&nbsp; остаток от А/Б ', 'А! &nbsp;&nbsp; факториал', 'sin &nbsp;&nbsp;А', 'cos &nbsp;&nbsp;А',
     'log &nbsp;&nbsp; логарифм А по осн. Б'];
 
-let nav_labels = ['ЧИСЛОБОГ', 'закон Ома', 'Т. В. З.'];
+let nav_labels = ['&nbsp;ЧИСЛОБОГ', '&nbsp;закон Ома', '&nbsp;&nbsp;Т. В. З.'];
 //====================
-
-// appender('header', '', '', '', '', '');
-// appender('h1', 'header', '', 'Ч И С Л О Б О Г', '', '');
 
 appender('header', '', '', '', '', 'header');
 appender('form', '#header', '', '', '', 'form2');
@@ -46,8 +43,7 @@ let body = document.querySelector('body');
 
 function gen_calc() {
     clear('#form');
-    // h1 = document.querySelector('h1');
-    // h1.innerHTML = 'Ч И С Л О Б О Г';
+
     appender('input', '#form', 'А', 'numeric', 'inputs user_fill', 'op1');
 
     appender('select', '#form', '', '', 'select', 'dey');
@@ -67,19 +63,17 @@ gen_calc();
 
 function gen_trans() {
     clear('#form');
-    // h1 = document.querySelector('h1');
-    // h1.innerHTML = 'Т В З';
 
     appender('label', '#form', '', 'К.', '', 'ktr_');
-    appender('sub', '#ktr_', '', 'тр.', '', '');
+    appender('sub', '#ktr_', '', 'тр.&nbsp;&nbsp;', '', '');
     appender('input', '#ktr_', 'соотн. числа витков', 'numeric', 'inputs trans', 'K');
 
     appender('label', '#form', '', 'R', '', 'loadR_');
-    appender('sub', '#loadR_', '', 'нагр.', '', '');
+    appender('sub', '#loadR_', '', 'нагр.&nbsp;', '', '');
     appender('input', '#loadR_', 'R нагр. УНЧ., Ом', 'numeric', 'inputs trans', 'L');
 
     appender('label', '#form', '', 'R', '', 'anodR_');
-    appender('sub', '#anodR_', '', 'анод.', '', '');
+    appender('sub', '#anodR_', '', 'анод.&nbsp;', '', '');
     appender('input', '#anodR_', 'R Анода, Ом', 'numeric', 'inputs trans', 'A');
 
     appender('', '#form', '', '', 'manage', 'manage');
@@ -95,16 +89,16 @@ function gen_ohms() {
     // h1 = document.querySelector('h1');
     // h1.innerHTML = 'З А К О Н &nbsp; О М А';
 
-    appender('label', '#form', '', 'U', '', 'volt_');
+    appender('label', '#form', '', 'U&nbsp;', '', 'volt_');
     appender('input', '#volt_', 'напряжение', 'numeric', 'inputs ohm', 'voltage');
 
-    appender('label', '#form', '', 'I', '', 'curr_');
+    appender('label', '#form', '', 'I&nbsp;', '', 'curr_');
     appender('input', '#curr_', 'сила тока', 'numeric', 'inputs ohm', 'current');
 
-    appender('label', '#form', '', 'R', '', 'res_');
+    appender('label', '#form', '', 'R&nbsp;', '', 'res_');
     appender('input', '#res_', 'сопротивление', 'numeric', 'inputs ohm', 'resist');
 
-    appender('label', '#form', '', 'P', '', 'pow_');
+    appender('label', '#form', '', 'P&nbsp;', '', 'pow_');
     appender('input', '#pow_', 'мощность', 'numeric', 'inputs ohm', 'power');
 
     appender('', '#form', '', '', 'manage', 'manage');
