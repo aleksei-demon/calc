@@ -110,6 +110,8 @@ option {
 #calculate_ohm:active,
 #calculate_trans:active{
   text-shadow: 1px 1px 2px #CC8193, -1px -1px 2px #CC8193;
+  box-shadow: inset 0px 0px 15px 2px rgba(0, 0, 0, 0.09);
+  transition: all 0.1s ease-out;
 }
 
 #massage {
@@ -130,11 +132,13 @@ option {
   text-shadow:  1px 1px 5px #CC8193A3, -1px -1px 5px #CC8193A3;
   box-shadow: none;
 }
+
 #nav_0, #nav_1, #nav_2{
    font-family: 'verdana';
    text-shadow: none;
    text-align: center;
 }
+
 @media screen and (orientation: landscape) {
 
   .inputs,
