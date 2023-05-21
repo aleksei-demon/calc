@@ -35,10 +35,7 @@ fill_select_options(nav_labels, 'nav_');
 appender('section', '', '', '', '', 'sec1');
 
 appender('form', '#sec1', '', '', '', 'form');
-//-
-
-
-let h1 = document.querySelector('h1');
+//---
 let body = document.querySelector('body');
 
 function gen_calc() {
@@ -59,7 +56,6 @@ function gen_calc() {
     document.querySelector('body').className = 'body_calc';
     for (all of document.querySelectorAll('option')) { all.className = 'body_calc'; }
 }
-gen_calc();
 
 function gen_trans() {
     clear('#form');
@@ -86,8 +82,6 @@ function gen_trans() {
 
 function gen_ohms() {
     clear('#form');
-    // h1 = document.querySelector('h1');
-    // h1.innerHTML = 'З А К О Н &nbsp; О М А';
 
     appender('label', '#form', '', 'U&nbsp;', '', 'volt_');
     appender('input', '#volt_', 'напряжение', 'numeric', 'inputs ohm', 'voltage');
@@ -108,6 +102,15 @@ function gen_ohms() {
     document.querySelector('body').className = 'body_ohms';
     for (all of document.querySelectorAll('option')) { all.className = 'body_ohms'; }
 }
+
+function draw_start() {
+    switch (nav.value) {
+        case nav_labels[0]: gen_calc(); break;
+        case nav_labels[1]: gen_ohms(); break;
+        case nav_labels[2]: gen_trans(); break;
+    }
+}
+draw_start();
 
 function Calc() {
     document.querySelector('#otvet').placeholder = 'Ответ';
@@ -294,8 +297,7 @@ function event_input(e) { //e.target.id
         //Transform
         case 'K': toggle_input_cssClass(K); K_(); break; //k = sqrt(A/l)
         case 'L': toggle_input_cssClass(L); L_(); break; //l = A/(k**2)
-        case 'A': toggle_input_cssClass(A); A_(); break; //A = l*(k**2)
-        //default: console.log(e.target);
+        case 'A': toggle_input_cssClass(A); A_(); break; //A = l*(k**2)        
     }
     switch (e.target.value) {
         //nav
