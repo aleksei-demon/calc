@@ -31,6 +31,7 @@ appender('form', '#header', '', '', '', 'form2');
 appender('select', '#form2', '', '', 'select', 'nav');
 gen(nav_labels.length, 'option', '#nav', '', '', '', 'nav_');
 fill_select_options(nav_labels, 'nav_');
+document.querySelector('#nav_0').setAttribute('selected', 'selected');
 
 appender('section', '', '', '', '', 'sec1');
 
@@ -241,6 +242,12 @@ function A_() {
     }
 }
 
+function sbros() {
+    let sbr = document.querySelectorAll('.inputs');
+    for (let val of sbr) { val.value = ''; }
+    revolve_1 = revolve_2 = 0;
+}
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 let revolve_1 = 0;
@@ -251,11 +258,7 @@ function event_click(e) { //e.target.id
     e.preventDefault();
     switch (e.target.id) {
         case 'otvet': put_to_RAM(); break;
-        case 'sbros':
-            let sbr = document.querySelectorAll('.inputs');
-            for (let val of sbr) { val.value = ''; }
-            revolve_1 = revolve_2 = 0;
-            break;
+        case 'sbros': sbros(); break;
         case 'calculate_ohm': Ohm(); break;
         case 'calculate_trans': T_V_Z(); break;
     }
@@ -322,3 +325,4 @@ function toggle_input_cssClass(elem, result = false) {
     }
 }
 
+sbros();
