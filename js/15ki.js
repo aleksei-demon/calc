@@ -32,7 +32,6 @@ appender('select', '#form2', '', '', 'select', 'nav');
 gen(nav_labels.length, 'option', '#nav', '', '', '', 'nav_');
 fill_select_options(nav_labels, 'nav_');
 document.querySelector('#nav_0').setAttribute('selected', 'selected');
-document.querySelector('#form2').reset();
 
 appender('section', '', '', '', '', 'sec1');
 
@@ -326,3 +325,8 @@ function toggle_input_cssClass(elem, result = false) {
     }
 }
 
+window.addEventListener('load', mobile_startCorrect);
+function mobile_startCorrect() {
+    sbros();
+    document.querySelector('#form2').reset();
+}
