@@ -32,6 +32,7 @@ appender('select', '#form2', '', '', 'select', 'nav');
 gen(nav_labels.length, 'option', '#nav', '', '', '', 'nav_');
 fill_select_options(nav_labels, 'nav_');
 document.querySelector('#nav_0').setAttribute('selected', 'selected');
+document.querySelector('#form2').reset();
 
 appender('section', '', '', '', '', 'sec1');
 
@@ -40,7 +41,6 @@ appender('form', '#sec1', '', '', '', 'form');
 let body = document.querySelector('body');
 
 function gen_calc() {
-    document.querySelector('#form2').reset();
     clear('#form');
 
     appender('input', '#form', 'А', 'numeric', 'inputs user_fill', 'op1');
