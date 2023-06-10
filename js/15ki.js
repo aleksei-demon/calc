@@ -40,6 +40,7 @@ appender('form', '#sec1', '', '', '', 'form');
 let body = document.querySelector('body');
 
 function gen_calc() {
+    document.querySelector('#form2').reset();
     clear('#form');
 
     appender('input', '#form', 'А', 'numeric', 'inputs user_fill', 'op1');
@@ -325,4 +326,3 @@ function toggle_input_cssClass(elem, result = false) {
     }
 }
 
-sbros();
