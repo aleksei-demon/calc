@@ -12,7 +12,7 @@ gen('', '', '', '', '', '', '');
 
 adaptive('', '', '', '', '');// ЭТО УСТАНАВЛИВАТЬ В НИЗУ ФАЙЛA APPENDER.JS
 
-clear('');
+clear(''); 
 
 fill_select_options(where_to_get, option_id);
 */
@@ -22,7 +22,7 @@ let dey_labels = ['&nbsp;&nbsp;+', '&nbsp;&nbsp;-', '&nbsp;&nbsp;*', '&nbsp;&nbs
     '% &nbsp;&nbsp; остаток от А/Б ', 'А! &nbsp;&nbsp; факториал', 'sin &nbsp;&nbsp;А', 'cos &nbsp;&nbsp;А',
     'log &nbsp;&nbsp; логарифм А по осн. Б'];
 
-let nav_labels = ['&nbsp;ЧИСЛОБОГ', '&nbsp;закон Ома', '&nbsp;&nbsp;Т. В. З.'];
+let nav_labels = ['&nbsp;ЧИСЛОБОГ', '&nbsp;закон Ома', '&nbsp;&nbsp;Т. В. З.', '&nbsp;&nbsp;К. Д. П.'];
 //====================
 
 appender('header', '', '', '', '', 'header');
@@ -105,11 +105,34 @@ function gen_ohms() {
     for (all of document.querySelectorAll('option')) { all.className = 'body_ohms'; }
 }
 
+function gen_kdp() {
+    clear('#form');
+
+    appender('label', '#form', '', 'длина&nbsp;&nbsp;&nbsp;', '', 'len_');
+    appender('input', '#len_', 'введите значение', 'numeric', 'inputs kdp', 'len');
+
+    appender('label', '#form', '', 'ширина&nbsp;', '', 'widt_');
+    appender('input', '#widt_', 'введите значение', 'numeric', 'inputs kdp', 'widt');
+
+    appender('label', '#form', '', 'высота&nbsp;', '', 'heig_');
+    appender('input', '#heig_', 'введите значение', 'numeric', 'inputs kdp', 'heig');
+
+    appender('label', '#form', '', 'площадь&nbsp;', '', 'area_');
+    appender('input', '#area_', 'введите значение', 'numeric', 'inputs kdp', 'area');
+
+    appender('', '#form', '', '', 'manage', 'manage');
+    appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
+
+    document.querySelector('body').className = 'body_kdp';
+    for (all of document.querySelectorAll('option')) { all.className = 'body_kdp'; }
+}
+
 function draw_start() {
     switch (nav.value) {
         case nav_labels[0]: gen_calc(); break;
         case nav_labels[1]: gen_ohms(); break;
         case nav_labels[2]: gen_trans(); break;
+        case nav_labels[3]: gen_kdp(); break;
     }
 }
 draw_start();
@@ -243,6 +266,31 @@ function A_() {
     }
 }
 
+function len_() {
+    widt.value = +(+len.value * 0.62).toFixed(2); toggle_input_cssClass(widt, true) //w = l*0.62
+    heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h = w*0.62
+    area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
+}
+function widt_() {
+    len.value = +(+widt.value * 1.62).toFixed(2); toggle_input_cssClass(len, true) //l = w * 1.62
+    heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h=w*0.62
+    area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
+}
+function heig_() {
+    widt.value = +(+heig.value * 1.62).toFixed(2); toggle_input_cssClass(widt, true) //w = h * 1.62
+    len.value = +(+widt.value * 1.62).toFixed(2); toggle_input_cssClass(len, true) //l = w*1.62
+    area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
+}
+function area_() {
+    // 6	3.1 = 1.9
+    // 15	4.9 = 3
+    // 40	8	= 5
+    // 90 	12	= 7.5
+    len.value = +(Math.sqrt(+area.value) * 1.265).toFixed(2); toggle_input_cssClass(len, true) //l = w*1.62
+    widt.value = +(+len.value * 0.62).toFixed(2); toggle_input_cssClass(widt, true) //w = l*0.62
+    heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h = w*0.62
+}
+
 function sbros() {
     let sbr = document.querySelectorAll('.inputs');
     for (let val of sbr) { val.value = ''; }
@@ -302,12 +350,18 @@ function event_input(e) { //e.target.id
         case 'K': toggle_input_cssClass(K); K_(); break; //k = sqrt(A/l)
         case 'L': toggle_input_cssClass(L); L_(); break; //l = A/(k**2)
         case 'A': toggle_input_cssClass(A); A_(); break; //A = l*(k**2)        
+        // K D P
+        case 'len': toggle_input_cssClass(len); len_(); break;
+        case 'widt': toggle_input_cssClass(widt); widt_(); break;
+        case 'heig': toggle_input_cssClass(heig); heig_(); break;
+        case 'area': toggle_input_cssClass(area); area_(); break;
     }
     switch (e.target.value) {
         //nav
         case nav_labels[0]: gen_calc(); revolve_1 = revolve_2 = 0; break;
         case nav_labels[1]: gen_ohms(); break;
         case nav_labels[2]: gen_trans(); break;
+        case nav_labels[3]: gen_kdp(); break;
     }
 }
 

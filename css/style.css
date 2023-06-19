@@ -89,6 +89,10 @@ option {
   background: #524700;
 }
 
+.body_kdp {
+  background: #52273E;
+}
+
 .user_fill {
   color: #aca;
 }
@@ -109,6 +113,7 @@ option {
 
 #sbros,
 #calculate_ohm,
+#calculate_kdp,
 #calculate_trans {
   padding: 2vh 3vh;
   margin-top: 4vh;
@@ -122,6 +127,7 @@ option {
 
 #sbros:active,
 #calculate_ohm:active,
+#calculate_kdp:active,
 #calculate_trans:active {
   text-shadow: 1px 1px 2px #CC8193, -1px -1px 2px #CC8193;
   box-shadow: inset 0px 0px 15px 2px rgba(0, 0, 0, 0.09);
@@ -137,7 +143,7 @@ option {
   letter-spacing: 3px;
 }
 
-#nav {   
+#nav {
   font-family: 'Galaktika';
   letter-spacing: 1vw;
   text-align: center;
@@ -149,7 +155,8 @@ option {
 
 #nav_0,
 #nav_1,
-#nav_2 {
+#nav_2,
+#nav_3 {
   font-family: 'verdana';
   text-shadow: none;
   text-align: center;
@@ -164,7 +171,8 @@ option {
   }
 
   .trans::placeholder,
-  .ohm::placeholder {
+  .ohm::placeholder,
+  kdp::placeholder {
     letter-spacing: 1px;
     font-size: 4vh;
   }
@@ -178,37 +186,45 @@ option {
   #otvet,
   #sbros,
   #calculate_ohm,
+  #calculate_kdp,
   #calculate_trans {
-    font-size: 6vh;    
+    font-size: 6vh;
   }
-  
+
   #sbros,
   #calculate_ohm,
-  #calculate_trans{ width: 35vh;}
+  #calculate_kdp,
+  #calculate_trans {
+    width: 35vh;
+  }
 }
 
 @media screen and (orientation: portrait) {
 
   .trans,
-  .ohm {
+  .ohm,
+  .kdp {
     width: 50vw;
   }
 
   .trans::placeholder,
-  .ohm::placeholder {
+  .ohm::placeholder,
+  .kdp::placeholder {
     letter-spacing: 1px;
     font-size: 6vw;
   }
 
   #sbros,
   #calculate_ohm,
+  #calculate_kdp,
   #calculate_trans {
     padding: 2vh 3vw;
     width: 35vw;
     font-size: 7vw;
     letter-spacing: 2px;
-  }  
-  #nav{
+  }
+
+  #nav {
     width: 80vw;
     font-size: 11vw;
   }
