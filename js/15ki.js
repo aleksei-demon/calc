@@ -77,6 +77,7 @@ function gen_trans() {
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
     appender('button', '#manage', '', 'С Ч Ё Т', 'inputs', 'calculate_trans');
+    appender('p', '#form', '', 'Тут можно выполнить расчёт приведённого сопротивления выходного трансформатора лампового УНЧ', '', 'explanation');
 
     document.querySelector('body').className = 'body_trans';
     for (all of document.querySelectorAll('option')) { all.className = 'body_trans'; }
@@ -100,7 +101,7 @@ function gen_ohms() {
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
     appender('button', '#manage', '', 'С Ч Ё Т', 'inputs', 'calculate_ohm');
-
+    appender('p', '#form', '', 'Введите любую пару параметров, и жмите "рассчёт".', '', 'explanation');
     document.querySelector('body').className = 'body_ohms';
     for (all of document.querySelectorAll('option')) { all.className = 'body_ohms'; }
 }
@@ -122,6 +123,7 @@ function gen_kdp() {
 
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
+    appender('p', '#form', '', 'Достаточно ввести один любой параметр, чтобы получить результат расчёта остальных размеров Комнаты Для Прислушивания, основанных на принципе "золотого сечения" - 1 к 1.62', '', 'explanation');
 
     document.querySelector('body').className = 'body_kdp';
     for (all of document.querySelectorAll('option')) { all.className = 'body_kdp'; }

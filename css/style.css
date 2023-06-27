@@ -135,12 +135,22 @@ option {
 }
 
 #massage {
-  color: #aaa;
   color: #EBF2EA;
   padding: 1vh;
   margin: 1vh;
   text-align: center;
   letter-spacing: 3px;
+}
+
+#explanation {
+  color: #ebf2ea5a;
+  padding: 2vh;
+  margin: 4vh;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: cursive;
+  line-height: 1.5;
+  text-align: justify;
 }
 
 #nav {
