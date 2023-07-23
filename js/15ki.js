@@ -54,6 +54,8 @@ function gen_calc() {
     document.querySelector('#otvet').setAttribute('readonly', 'readonly');
     appender('button', '#form', '', 'С Б Р О С', 'inputs', 'sbros');
     appender('p', '#form', '', '', '', 'massage');
+    appender('p', '#form', '', 'даблклик на поле ввода даст число &#960;, следующий число е, а третий 1/2&#960;', '', 'explanation');
+
 
     document.querySelector('body').className = 'body_calc';
     for (all of document.querySelectorAll('option')) { all.className = 'body_calc'; }
@@ -123,7 +125,7 @@ function gen_kdp() {
 
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
-    appender('p', '#form', '', 'Достаточно ввести один любой параметр, чтобы получить результат расчёта остальных размеров Комнаты Для Прислушивания, основанных на принципе "золотого сечения" - 1 к 1.62', '', 'explanation');
+    appender('p', '#form', '', 'Достаточно ввести один любой параметр, чтобы получить результат расчёта остальных размеров Комнаты Для Прослушивания музыки, основанных на принципе "золотого сечения" - 1 к 1.62', '', 'explanation');
 
     document.querySelector('body').className = 'body_kdp';
     for (all of document.querySelectorAll('option')) { all.className = 'body_kdp'; }
@@ -144,7 +146,7 @@ function Calc() {
     let err_count = 0;
     let otv = 0;
     switch (dey.value) {
-        case dey_labels[0]: otv = +op1.value + +op2.value; break;
+        case dey_labels[0]: otv = sumWithFix(+op1.value, +op2.value); break;
         case dey_labels[1]: otv = +op1.value - +op2.value; break;
         case dey_labels[2]: otv = +op1.value * +op2.value; break;
         case dey_labels[3]: otv = +op1.value / +op2.value; break;
@@ -168,6 +170,22 @@ function Calc() {
     if (otv == -Infinity) { otvet.placeholder = '-Безконечность'; otv = ''; otvet.value = otv; return }
     if (isNaN(otv)) { otv = ''; otvet.value = otv; return }
 
+    //это дал чат ГПТ--------------
+    function sumWithFix(a, b) {
+        const precision = Math.max(getDecimalPlaces(a), getDecimalPlaces(b));
+        const multiplier = Math.pow(10, precision);
+
+        const fixedA = Math.round(a * multiplier);
+        const fixedB = Math.round(b * multiplier);
+        return (fixedA + fixedB) / multiplier;
+
+        function getDecimalPlaces(number) {
+            const decimalPart = String(number).split('.')[1];
+            return decimalPart ? decimalPart.length : 0;
+        }
+    }
+    //-----------------------
+
     let countZerro = 0;
     let zerroFix = false;
     for (let val of String(otv)) {
@@ -178,22 +196,9 @@ function Calc() {
         } else { countZerro = 0; }
     }
     if (zerroFix == true) {
-        otvet.value = +(otv.toFixed(countZerro - 1)); console.log(countZerro);
-    } else { otvet.value = otv; }
+        otvet.value = +(otv.toFixed(countZerro - 1)); console.log(zerroFix); console.log(countZerro + ' zerros');
+    } else { otvet.value = otv; console.log(zerroFix); console.log(countZerro); }
 
-    // let count_nines = 0;
-    // let nineFix = 0;
-    // for (let i = 0; i < String(otv).length; i++) {
-    //   if (String(otv)[i] == 9) {
-    //     count_nines++; nineFix = (i - 1);
-    //   } else { count_nines = 0; nineFix = 0; }
-    //   if (count_nines > 8) {
-    //     String(otv)[nineFix] += 1;
-    //     console.log(nineFix);
-    //     console.log(String(otv)[nineFix]);
-    //   }
-    // }
-    // otvet.value = otv;
 }
 
 function put_to_RAM() {

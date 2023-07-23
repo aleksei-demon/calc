@@ -36,7 +36,7 @@ input::placeholder {
 
 .inputs {
   background: transparent;
-  margin-top: 1vh;
+ 
   padding: 0 2vh;
   cursor: pointer;
   width: 90vw;
@@ -116,7 +116,7 @@ option {
 #calculate_kdp,
 #calculate_trans {
   padding: 2vh 3vh;
-  margin-top: 4vh;
+  margin-top: 3vh;
   font-family: 'Galaktika';
   width: 25vh;
   box-shadow: inset 0px 0px 15px 2px rgba(0, 0, 0, 0.05);
