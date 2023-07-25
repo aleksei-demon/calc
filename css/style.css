@@ -224,17 +224,23 @@ option {
 
   .trans,
   .ohm,
-  .kdp,
-  .spk {
+  .kdp {
     width: 50vw;
+  }
+  
+  .spk {
+    width: 40vw;
   }
 
   .trans::placeholder,
   .ohm::placeholder,
-  .kdp::placeholder,
-  .spk::placeholder {
+  .kdp::placeholder {
     letter-spacing: 1px;
-    font-size: 6vw;
+    font-size: 5vw;
+  }
+  
+  .spk::placeholder {    
+    font-size: 4vw;
   }
 
   #sbros,
