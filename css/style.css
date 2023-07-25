@@ -36,7 +36,6 @@ input::placeholder {
 
 .inputs {
   background: transparent;
- 
   padding: 0 2vh;
   cursor: pointer;
   width: 90vw;
@@ -93,6 +92,10 @@ option {
   background: #52273E;
 }
 
+.body_spk {
+  background: #523527;
+}
+
 .user_fill {
   color: #aca;
 }
@@ -145,7 +148,7 @@ option {
 #explanation {
   color: #ebf2ea5a;
   padding: 2vh;
-  margin: 4vh;
+  margin: 2vh 4vh 0vh 4vh;
   text-align: center;
   letter-spacing: 3px;
   font-family: cursive;
@@ -166,7 +169,8 @@ option {
 #nav_0,
 #nav_1,
 #nav_2,
-#nav_3 {
+#nav_3,
+#nav_4{
   font-family: 'verdana';
   text-shadow: none;
   text-align: center;
@@ -174,20 +178,27 @@ option {
 
 @media screen and (orientation: landscape) {
 
-  .inputs,
+  #explanation,
   select {
     width: 60vw;
     max-width: 500px;
   }
 
+  .inputs {
+    width: 40vw;
+    max-width: 500px;
+  }
+
   .trans::placeholder,
   .ohm::placeholder,
-  kdp::placeholder {
+  .kdp::placeholder,
+  .spk::placeholder {
     letter-spacing: 1px;
     font-size: 4vh;
   }
 
   label {
+    margin-left: 15vw;
     font-size: 6vh;
   }
 
@@ -213,13 +224,15 @@ option {
 
   .trans,
   .ohm,
-  .kdp {
+  .kdp,
+  .spk {
     width: 50vw;
   }
 
   .trans::placeholder,
   .ohm::placeholder,
-  .kdp::placeholder {
+  .kdp::placeholder,
+  .spk::placeholder {
     letter-spacing: 1px;
     font-size: 6vw;
   }

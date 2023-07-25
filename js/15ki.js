@@ -22,7 +22,7 @@ let dey_labels = ['&nbsp;&nbsp;+', '&nbsp;&nbsp;-', '&nbsp;&nbsp;*', '&nbsp;&nbs
     '% &nbsp;&nbsp; остаток от А/Б ', 'А! &nbsp;&nbsp; факториал', 'sin &nbsp;&nbsp;А', 'cos &nbsp;&nbsp;А',
     'log &nbsp;&nbsp; логарифм А по осн. Б'];
 
-let nav_labels = ['&nbsp;ЧИСЛОБОГ', '&nbsp;закон Ома', '&nbsp;&nbsp;Т. В. З.', '&nbsp;&nbsp;К. Д. П.'];
+let nav_labels = ['&nbsp;ЧИСЛОБОГ', '&nbsp;закон Ома', '&nbsp;&nbsp;Т. В. З.', '&nbsp;&nbsp;К. Д. П.', '&nbsp;Корпус А.С.'];
 //====================
 
 appender('header', '', '', '', '', 'header');
@@ -54,7 +54,9 @@ function gen_calc() {
     document.querySelector('#otvet').setAttribute('readonly', 'readonly');
     appender('button', '#form', '', 'С Б Р О С', 'inputs', 'sbros');
     appender('p', '#form', '', '', '', 'massage');
-    appender('p', '#form', '', 'даблклик на поле ввода даст число &#960;, следующий число е, а третий 1/2&#960;', '', 'explanation');
+    appender('p', '#form', '', 'Даблклик на поле ввода даст число &#960;, следующий число е, а третий 1/2&#960;', '', 'explanation');
+    appender('p', '#form', '', 'Клик на поле "Ответ" скопирует его в буфер обмена', '', 'explanation');
+
 
 
     document.querySelector('body').className = 'body_calc';
@@ -79,7 +81,7 @@ function gen_trans() {
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
     appender('button', '#manage', '', 'С Ч Ё Т', 'inputs', 'calculate_trans');
-    appender('p', '#form', '', 'Тут можно выполнить расчёт приведённого сопротивления выходного трансформатора лампового УНЧ', '', 'explanation');
+    appender('p', '#form', '', 'Расчёт приведённого сопротивления выходного трансформатора лампового УНЧ', '', 'explanation');
 
     document.querySelector('body').className = 'body_trans';
     for (all of document.querySelectorAll('option')) { all.className = 'body_trans'; }
@@ -125,10 +127,37 @@ function gen_kdp() {
 
     appender('', '#form', '', '', 'manage', 'manage');
     appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
-    appender('p', '#form', '', 'Достаточно ввести один любой параметр, чтобы получить результат расчёта остальных размеров Комнаты Для Прослушивания музыки, основанных на принципе "золотого сечения" - 1 к 1.62', '', 'explanation');
+    appender('p', '#form', '', 'Расчёт размеров Комнаты Для Прослушивания музыки. Достаточно ввести один любой параметр, чтобы получить результат , основанный на принципе "золотого сечения" - 1 к 1.62', '', 'explanation');
 
     document.querySelector('body').className = 'body_kdp';
     for (all of document.querySelectorAll('option')) { all.className = 'body_kdp'; }
+}
+
+function gen_speaker() {
+    clear('#form');
+
+    appender('label', '#form', '', 'высота&nbsp;', '', 'tall_');
+    appender('sub', '#tall_', '', 'см.&nbsp;&nbsp;', '', '');
+    appender('input', '#tall_', 'введите значение', 'numeric', 'inputs spk', 'tall');
+
+    appender('label', '#form', '', 'ширина&nbsp;', '', 'wide_');
+    appender('sub', '#wide_', '', 'см.&nbsp;&nbsp;', '', '');
+    appender('input', '#wide_', 'введите значение', 'numeric', 'inputs spk', 'wide');
+
+    appender('label', '#form', '', 'глубина&nbsp;', '', 'depth_');
+    appender('sub', '#depth_', '', 'см.&nbsp;&nbsp;', '', '');
+    appender('input', '#depth_', 'введите значение', 'numeric', 'inputs spk', 'depth');
+
+    appender('label', '#form', '', 'объём&nbsp;&nbsp;&nbsp;', '', 'vol_');
+    appender('sub', '#vol_', '', 'л.&nbsp;&nbsp;', '', '');
+    appender('input', '#vol_', 'введите значение', 'numeric', 'inputs spk', 'vol');
+
+    appender('', '#form', '', '', 'manage', 'manage');
+    appender('button', '#manage', '', 'С Б Р О С', 'inputs', 'sbros');
+    appender('p', '#form', '', 'Расчёт корпуса аудио колонки. Достаточно ввести один любой параметр, чтобы получить результат , основанный на принципе "золотого сечения" - 1 к 1.62', '', 'explanation');
+
+    document.querySelector('body').className = 'body_spk';
+    for (all of document.querySelectorAll('option')) { all.className = 'body_spk'; }
 }
 
 function draw_start() {
@@ -137,6 +166,7 @@ function draw_start() {
         case nav_labels[1]: gen_ohms(); break;
         case nav_labels[2]: gen_trans(); break;
         case nav_labels[3]: gen_kdp(); break;
+        case nav_labels[4]: gen_speaker(); break;
     }
 }
 draw_start();
@@ -175,8 +205,8 @@ function Calc() {
         const precision = Math.max(getDecimalPlaces(a), getDecimalPlaces(b));
         const multiplier = Math.pow(10, precision);
 
-        const fixedA = Math.round(a * multiplier);
-        const fixedB = Math.round(b * multiplier);
+        const fixedA = (a * multiplier);
+        const fixedB = (b * multiplier);
         return (fixedA + fixedB) / multiplier;
 
         function getDecimalPlaces(number) {
@@ -289,14 +319,33 @@ function heig_() {
     area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
 }
 function area_() {
-    // 6	3.1 = 1.9
-    // 15	4.9 = 3
-    // 40	8	= 5
-    // 90 	12	= 7.5
     len.value = +(Math.sqrt(+area.value) * 1.265).toFixed(2); toggle_input_cssClass(len, true) //l = w*1.62
     widt.value = +(+len.value * 0.62).toFixed(2); toggle_input_cssClass(widt, true) //w = l*0.62
     heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h = w*0.62
 }
+
+
+function tall_() {
+    depth.value = +(+tall.value * 0.62).toFixed(1); toggle_input_cssClass(depth, true) //d = tall*0.62
+    wide.value = +(+depth.value * 0.62).toFixed(1); toggle_input_cssClass(wide, true) //w = depth*0.62
+    vol.value = +((+tall.value * +depth.value * +wide.value) / 1000).toFixed(1); toggle_input_cssClass(vol, true) //area = l*w
+}
+function depth_() {
+    tall.value = +(+depth.value * 1.62).toFixed(1); toggle_input_cssClass(tall, true) //t = depth * 1.62
+    wide.value = +(+depth.value * 0.62).toFixed(1); toggle_input_cssClass(wide, true) //w=depth*0.62
+    vol.value = +((+tall.value * +depth.value * +wide.value) / 1000).toFixed(1); toggle_input_cssClass(vol, true) //area = l*w
+}
+function wide_() {
+    depth.value = +(+wide.value * 1.62).toFixed(1); toggle_input_cssClass(depth, true) //d = wide * 1.62
+    tall.value = +(+depth.value * 1.62).toFixed(1); toggle_input_cssClass(tall, true) //t = depth*1.62
+    vol.value = +((+tall.value * +depth.value * +wide.value) / 1000).toFixed(1); toggle_input_cssClass(vol, true) //area = l*w
+}
+function vol_() {
+    tall.value = +(Math.cbrt(+vol.value / 0.2389) * 10).toFixed(1); toggle_input_cssClass(tall, true) //t = w*1.62
+    depth.value = +(+tall.value * 0.62).toFixed(1); toggle_input_cssClass(depth, true) //d = tall*0.62
+    wide.value = +(+depth.value * 0.62).toFixed(1); toggle_input_cssClass(wide, true) //w = depth*0.62
+}
+
 
 function sbros() {
     let sbr = document.querySelectorAll('.inputs');
@@ -362,6 +411,11 @@ function event_input(e) { //e.target.id
         case 'widt': toggle_input_cssClass(widt); widt_(); break;
         case 'heig': toggle_input_cssClass(heig); heig_(); break;
         case 'area': toggle_input_cssClass(area); area_(); break;
+        // spk
+        case 'tall': toggle_input_cssClass(tall); tall_(); break;
+        case 'wide': toggle_input_cssClass(wide); wide_(); break;
+        case 'depth': toggle_input_cssClass(depth); depth_(); break;
+        case 'vol': toggle_input_cssClass(vol); vol_(); break;
     }
     switch (e.target.value) {
         //nav
@@ -369,6 +423,7 @@ function event_input(e) { //e.target.id
         case nav_labels[1]: gen_ohms(); break;
         case nav_labels[2]: gen_trans(); break;
         case nav_labels[3]: gen_kdp(); break;
+        case nav_labels[4]: gen_speaker(); break;
     }
 }
 
