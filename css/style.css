@@ -104,6 +104,10 @@ option {
   color: #cac;
 }
 
+.error_fill {
+  color: #e33;
+}
+
 #op1,
 #op2 {
   font-family: 'Calculator';

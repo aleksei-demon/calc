@@ -176,7 +176,7 @@ function Calc() {
     let err_count = 0;
     let otv = 0;
     switch (dey.value) {
-        case dey_labels[0]: otv = sumWithFix(+op1.value, +op2.value); break;
+        case dey_labels[0]: otv = +op1.value + +op2.value; break;
         case dey_labels[1]: otv = +op1.value - +op2.value; break;
         case dey_labels[2]: otv = +op1.value * +op2.value; break;
         case dey_labels[3]: otv = +op1.value / +op2.value; break;
@@ -200,49 +200,7 @@ function Calc() {
     if (otv == -Infinity) { otvet.placeholder = '-Безконечность'; otv = ''; otvet.value = otv; return }
     if (isNaN(otv)) { otv = ''; otvet.value = otv; return }
 
-    //это дал чат ГПТ--------------
-    function sumWithFix(a, b) {
-        const precision = Math.max(getDecimalPlaces(a), getDecimalPlaces(b));
-        const multiplier = Math.pow(10, precision);
-
-        const fixedA = (a * multiplier);
-        const fixedB = (b * multiplier);
-        return (fixedA + fixedB) / multiplier;
-
-        function getDecimalPlaces(number) {
-            const decimalPart = String(number).split('.')[1];
-            return decimalPart ? decimalPart.length : 0;
-        }
-        // function razor(str) {
-        //     let outer = '';
-        //     let posFlag = 0;
-        //     for (let i = str.length - 1; i >= 0; i--) {
-        //         if (str[i] == '0') { posFlag = i; } else { break; }
-        //     }
-        //     for (let k = 0; k < posFlag; k++) { outer += str[k]; }
-        //     return outer;
-        // }
-    }
-
-    //=========================
-
-    //===========================
-    //-----------------------
-
-    // let countZerro = 0;
-    // let zerroFix = false;
-    // for (let val of String(otv)) {
-    //     if (val == 0) {
-    //         countZerro++;
-    //     } else if (countZerro > 8 || val == 0) {
-    //         countZerro++; zerroFix = true;
-    //     } else { countZerro = 0; }
-    // }
-    // if (zerroFix == true) {
-    //     otvet.value = +(otv.toFixed(countZerro - 1)); console.log(zerroFix); console.log(countZerro + ' zerros');
-    // } else { }
-    otvet.value = +(otv.toFixed(9));
-
+    otvet.value = +(otv.toFixed(12));
 }
 
 function put_to_RAM() {
@@ -321,23 +279,32 @@ function len_() {
     widt.value = +(+len.value * 0.62).toFixed(2); toggle_input_cssClass(widt, true) //w = l*0.62
     heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h = w*0.62
     area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
+    err_of_small_heig();
 }
 function widt_() {
     len.value = +(+widt.value * 1.62).toFixed(2); toggle_input_cssClass(len, true) //l = w * 1.62
     heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h=w*0.62
     area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
+    err_of_small_heig();
 }
 function heig_() {
     widt.value = +(+heig.value * 1.62).toFixed(2); toggle_input_cssClass(widt, true) //w = h * 1.62
     len.value = +(+widt.value * 1.62).toFixed(2); toggle_input_cssClass(len, true) //l = w*1.62
     area.value = +(+len.value * +widt.value).toFixed(2); toggle_input_cssClass(area, true) //area = l*w
+    err_of_small_heig();
 }
 function area_() {
     len.value = +(Math.sqrt(+area.value) * 1.265).toFixed(2); toggle_input_cssClass(len, true) //l = w*1.62
     widt.value = +(+len.value * 0.62).toFixed(2); toggle_input_cssClass(widt, true) //w = l*0.62
     heig.value = +(+widt.value * 0.62).toFixed(2); toggle_input_cssClass(heig, true) //h = w*0.62
+    err_of_small_heig();
 }
 
+function err_of_small_heig() {
+    if (+heig.value < 2.39 && +heig.value > 0) {
+        setTimeout(function () { if (+heig.value < 2.39 && +heig.value > 0) heig.classList.add('error_fill'); }, 999)
+    } else { heig.classList.remove('error_fill'); }
+}
 
 function tall_() {
     depth.value = +(+tall.value * 0.62).toFixed(1); toggle_input_cssClass(depth, true) //d = tall*0.62
