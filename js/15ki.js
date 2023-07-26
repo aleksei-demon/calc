@@ -213,21 +213,35 @@ function Calc() {
             const decimalPart = String(number).split('.')[1];
             return decimalPart ? decimalPart.length : 0;
         }
+        // function razor(str) {
+        //     let outer = '';
+        //     let posFlag = 0;
+        //     for (let i = str.length - 1; i >= 0; i--) {
+        //         if (str[i] == '0') { posFlag = i; } else { break; }
+        //     }
+        //     for (let k = 0; k < posFlag; k++) { outer += str[k]; }
+        //     return outer;
+        // }
     }
+
+    //=========================
+
+    //===========================
     //-----------------------
 
-    let countZerro = 0;
-    let zerroFix = false;
-    for (let val of String(otv)) {
-        if (val == 0) {
-            countZerro++;
-        } else if (countZerro > 8 || val == 0) {
-            countZerro++; zerroFix = true;
-        } else { countZerro = 0; }
-    }
-    if (zerroFix == true) {
-        otvet.value = +(otv.toFixed(countZerro - 1)); console.log(zerroFix); console.log(countZerro + ' zerros');
-    } else { otvet.value = otv; console.log(zerroFix); console.log(countZerro); }
+    // let countZerro = 0;
+    // let zerroFix = false;
+    // for (let val of String(otv)) {
+    //     if (val == 0) {
+    //         countZerro++;
+    //     } else if (countZerro > 8 || val == 0) {
+    //         countZerro++; zerroFix = true;
+    //     } else { countZerro = 0; }
+    // }
+    // if (zerroFix == true) {
+    //     otvet.value = +(otv.toFixed(countZerro - 1)); console.log(zerroFix); console.log(countZerro + ' zerros');
+    // } else { }
+    otvet.value = +(otv.toFixed(9));
 
 }
 
