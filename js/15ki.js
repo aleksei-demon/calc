@@ -67,7 +67,7 @@ function gen_trans() {
     clear('#form');
 
     appender('label', '#form', '', 'К.', '', 'ktr_');
-    appender('sub', '#ktr_', '', 'тр.&nbsp;&nbsp;', '', '');
+    appender('sub', '#ktr_', '', 'тр.&nbsp;&nbsp;&nbsp;', '', '');
     appender('input', '#ktr_', 'соотн. числа витков', 'numeric', 'inputs trans', 'K');
 
     appender('label', '#form', '', 'R', '', 'loadR_');
@@ -217,10 +217,11 @@ function put_to_RAM() {
 
 function comma_point_correct(op) {
     let container = '';
-    let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
+    let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '-'];
     for (let val of op) {
         if (val == ',') { val = '.'; }
         if (container.includes('.') && val == '.') { val = '' }
+        if (container.length > 0 && val == '-') { val = '' }
         if (numbers.includes(val)) { container += val; }
     }
     return container;
@@ -252,26 +253,26 @@ function Ohm() {
 
 function T_V_Z() { //KLA
     if (L.value != '' && A.value != '') {
-        K.value = +(Math.sqrt(+(+A.value / +L.value))).toFixed(3); toggle_input_cssClass(K, true)//k = sqrt(A/l)       
+        K.value = +(Math.sqrt(+(+A.value / +L.value))).toFixed(1); toggle_input_cssClass(K, true)//k = sqrt(A/l)       
     } else if (K.value != '' && A.value != '') {
-        L.value = +(+A.value / +(K.value ** 2)).toFixed(3); toggle_input_cssClass(L, true) //l = A/(k**2)      
+        L.value = +(+A.value / +(K.value ** 2)).toFixed(1); toggle_input_cssClass(L, true) //l = A/(k**2)      
     } else if (L.value != '' && K.value != '') {
-        A.value = +(+L.value * +(K.value ** 2)).toFixed(3); toggle_input_cssClass(A, true) //A = l*(k**2)
+        A.value = +(+L.value * +(K.value ** 2)).toFixed(1); toggle_input_cssClass(A, true) //A = l*(k**2)
     }
 }
 function K_() {
     if (L.value != '' && K.value != '') {
-        A.value = +(+L.value * +(K.value ** 2)).toFixed(3); toggle_input_cssClass(A, true) //A = l*(k**2)
+        A.value = +(+L.value * +(K.value ** 2)).toFixed(1); toggle_input_cssClass(A, true) //A = l*(k**2)
     }
 }
 function L_() {
     if (L.value != '' && K.value != '') {
-        A.value = +(+L.value * +(K.value ** 2)).toFixed(3); toggle_input_cssClass(A, true) //A = l*(k**2)
+        A.value = +(+L.value * +(K.value ** 2)).toFixed(1); toggle_input_cssClass(A, true) //A = l*(k**2)
     }
 }
 function A_() {
     if (L.value != '' && A.value != '') {
-        K.value = +(Math.sqrt(+(+A.value / +L.value))).toFixed(3); toggle_input_cssClass(K, true)//k = sqrt(A/l)       
+        K.value = +(Math.sqrt(+(+A.value / +L.value))).toFixed(1); toggle_input_cssClass(K, true)//k = sqrt(A/l)       
     }
 }
 
