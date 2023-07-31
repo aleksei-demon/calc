@@ -356,15 +356,15 @@ function event_dblclick(e) { //e.target.id
     e.preventDefault();
     switch (e.target.id) {
         case 'op1':
-            if (revolve_1 % 3 == 0) { op1.value = Math.PI; Calc(); }
-            if (revolve_1 % 3 == 1) { op1.value = Math.E; Calc(); }
-            if (revolve_1 % 3 == 2) { op1.value = (Math.PI / 2); Calc(); }
+            if (revolve_1 % 3 == 0) { op1.value = Math.PI.toFixed(9); Calc(); }
+            if (revolve_1 % 3 == 1) { op1.value = Math.E.toFixed(9); Calc(); }
+            if (revolve_1 % 3 == 2) { op1.value = (Math.PI / 2).toFixed(9); Calc(); }
             revolve_1++;
             break;
         case 'op2':
-            if (revolve_2 % 3 == 0) { op2.value = Math.PI; Calc(); }
-            if (revolve_2 % 3 == 1) { op2.value = Math.E; Calc(); }
-            if (revolve_2 % 3 == 2) { op2.value = (Math.PI / 2); Calc(); }
+            if (revolve_2 % 3 == 0) { op2.value = Math.PI.toFixed(9); Calc(); }
+            if (revolve_2 % 3 == 1) { op2.value = Math.E.toFixed(9); Calc(); }
+            if (revolve_2 % 3 == 2) { op2.value = (Math.PI / 2).toFixed(9); Calc(); }
             revolve_2++;
             break;
     }
